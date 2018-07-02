@@ -43,24 +43,31 @@ for($i=5;$i<=$limit;$i++){
 
 
 
+	$j = 1;
 	foreach ($rows as $row) {
-	        $cols = $row->getElementsByTagName('td');
 	        
-	        //$myobj = null;
-	        $myobj = new stdClass();
-	        // fetching all the required columns
-	        $myobj->horseID = trim($cols[1]->nodeValue);
-	        $myobj->horseName = trim($cols[2]->nodeValue);
-	        $myobj->regNo = trim($cols[3]->nodeValue);
-	        $myobj->age = trim($cols[4]->nodeValue);
-	        $myobj->sex = trim($cols[5]->nodeValue);
-	        $myobj->color = trim($cols[6]->nodeValue);
-	        $myobj->country = trim($cols[7]->nodeValue);
+			
+			if($j > 1) {
+		        $cols = $row->getElementsByTagName('td');
+		        
+		        //$myobj = null;
+		        $myobj = new stdClass();
+		        // fetching all the required columns
+		        $myobj->horseID = trim($cols[1]->nodeValue);
+		        $myobj->horseName = trim($cols[2]->nodeValue);
+		        $myobj->regNo = trim($cols[3]->nodeValue);
+		        $myobj->age = trim($cols[4]->nodeValue);
+		        $myobj->sex = trim($cols[5]->nodeValue);
+		        $myobj->color = trim($cols[6]->nodeValue);
+		        $myobj->country = trim($cols[7]->nodeValue);
+		    
+		        array_push($myarray, $myobj);
+		    }
+		    $j = $j+1;
 
 	        
 	        //var_dump($myobj);
 
-	        array_push($myarray, $myobj);
 
 	        //echo $myobj->horseID.'   '.$myobj->horseName.'   '.$myobj->regNo.'   '.$myobj->age.'   '.$myobj->sex.'   '.$myobj->color.'   '.$myobj->country."\n";
 	}
