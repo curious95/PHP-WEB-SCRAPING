@@ -1,7 +1,7 @@
 <?php
 
 //Loading the html files dynamically
-$html = file_get_contents('http://www.alltidhest.org/Horses/Page/1');
+$html = file_get_contents('http://www.alltidhest.org/Horses/Page/0');
 
 //echo $html;
 
@@ -25,17 +25,18 @@ for($i=0;$i<999999;$i++){
 	foreach ($rows as $row) {
 	        $cols = $row->getElementsByTagName('td');
 	        
+	        $myobj = null;
 
 	        // fetching all the required columns
-	        $horseID = trim($cols[1]->nodeValue);
-	        $horseName = trim($cols[2]->nodeValue);
-	        $regNo = trim($cols[3]->nodeValue);
-	        $age = trim($cols[4]->nodeValue);
-	        $sex = trim($cols[5]->nodeValue);
-	        $color = trim($cols[6]->nodeValue);
-	        $country = trim($cols[7]->nodeValue);
+	        $myobj->$horseID = trim($cols[1]->nodeValue);
+	        $myobj->$horseName = trim($cols[2]->nodeValue);
+	        $myobj->$regNo = trim($cols[3]->nodeValue);
+	        $myobj->$age = trim($cols[4]->nodeValue);
+	        $myobj->$sex = trim($cols[5]->nodeValue);
+	        $myobj->$color = trim($cols[6]->nodeValue);
+	        $myobj->$country = trim($cols[7]->nodeValue);
 
-	        echo $horseID.'   '.$horseName.'   '.$regNo.'   '.$age.'   '.$sex.'   '.$color.'   '.$country."\n";
+	        echo $myobj->$horseID.'   '.$myobj->$horseName.'   '.$myobj->$regNo.'   '.$myobj->$age.'   '.$myobj->$sex.'   '.$myobj->$color.'   '.$myobj->$country."\n";
 	}
 }
 
